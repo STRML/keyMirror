@@ -10,6 +10,8 @@ This is not my code, this is property of Facebook.
 Usage
 -----
 
+`npm install keymirror`
+
 ```javascript
 var keyMirror = require('keyMirror');
 var COLORS = keyMirror({blue: null, red: null});

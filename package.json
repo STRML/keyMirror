@@ -1,5 +1,5 @@
 {
-  "name": "keyMirror",
+  "name": "keymirror",
   "version": "0.1.0",
   "description": "A simple utility for creating an object with values equal to its keys. Identical to react/lib/keyMirror",
   "main": "index.js",
