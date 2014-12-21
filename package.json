@@ -1,6 +1,6 @@
 {
   "name": "keymirror",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple utility for creating an object with values equal to its keys. Identical to react/lib/keyMirror",
   "main": "index.js",
   "author": "Samuel Reed <sam@tixelated.com> (http://strml.net/)",
