@@ -42,10 +42,9 @@ var keyMirror = function(obj) {
     throw new Error('keyMirror(...): Argument must be an object.');
   }
   for (key in obj) {
-    if (!obj.hasOwnProperty(key)) {
-      continue;
+    if (obj.hasOwnProperty(key)) {
+      ret[key] = key;
     }
-    ret[key] = key;
   }
   return ret;
 };
