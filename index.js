@@ -17,6 +17,10 @@
 
 "use strict";
 
+var isString = function(s) {
+  return typeof(s) === 'string' || s instanceof String;
+}
+
 /**
  * Constructs an enumeration with keys equal to their value.
  *
@@ -32,18 +36,31 @@
  *   Input:  {key1: val1, key2: val2}
  *   Output: {key1: key1, key2: key2}
  *
- * @param {object} obj
+ *   Input:  [key1, key2]
+ *   Output: {key1: key1, key2: key2}
+ *
+ * @param {(object|string[])} obj
  * @return {object}
  */
 var keyMirror = function(obj) {
   var ret = {};
   var key;
-  if (!(obj instanceof Object && !Array.isArray(obj))) {
-    throw new Error('keyMirror(...): Argument must be an object.');
+  if (!(obj instanceof Object)) {
+    throw new Error('keyMirror(...): Argument must be an object or an array.');
   }
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) {
+  if (Array.isArray(obj)) {
+    for (var i = 0; i < obj.length; i++) {
+      key = obj[i];
+      if (!(isString(key))) {
+        throw new Error('keyMirror(...): Keys must be strings.');
+      }
       ret[key] = key;
+    };
+  } else {
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        ret[key] = key;
+      }
     }
   }
   return ret;
