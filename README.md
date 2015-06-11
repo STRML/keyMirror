@@ -30,6 +30,6 @@ I sometimes use this with lodash - use the following upon your first use of loda
 
 ```javascript
 var _ = require('lodash');
-_.mixin({keyMirror: require('keyMirror')});
+_.mixin({keyMirror: require('keymirror')});
 // Can now be used as _.keyMirror(object)
 ```
