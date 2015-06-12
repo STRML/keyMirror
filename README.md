@@ -26,6 +26,10 @@ Input:  `{key1: val1, key2: val2}`
 
 Output: `{key1: key1, key2: key2}`
 
+Input:  `[key1, key2]`
+
+Output: `{key1: key1, key2: key2}`
+
 I sometimes use this with lodash - use the following upon your first use of lodash to mix it in:
 
 ```javascript
