@@ -8,10 +8,16 @@
     "type": "git",
     "url": "https://github.com/STRML/keyMirror"
   },
+  "scripts": {
+    "build": "webpack --config dist.config.js && webpack -p --config dist.min.config.js"
+  },
   "licenses": [
     {
       "type": "Apache-2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
-  ]
+  ],
+  "devDependencies": {
+    "webpack": "^1.10.5"
+  }
 }
