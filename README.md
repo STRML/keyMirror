@@ -7,6 +7,26 @@ I thought `react/lib/keyMirror` was useful and wanted to reuse it without any de
 
 This is not my code, this is property of Facebook.
 
+Why?
+----
+
+From [this discussion](https://github.com/facebook/react/issues/1639#issuecomment-45188026):
+
+
+> The main purpose of keyMirror is to deal with the fact that Closure Compiler advanced mode crushes keys, which allows you to write code like
+
+> `keyMirror({monkey: null, gorilla: null})`
+
+> and have it become something like
+
+> `k({m:null,g:null})`
+
+> which evaluates to
+
+> `{m:"m",g:"g"}`
+
+> at runtime. If it was specified as a list of strings, they wouldn't get crushed matching the property names.
+
 Usage
 -----
 
