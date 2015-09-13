@@ -46,6 +46,8 @@ Input:  `{key1: val1, key2: val2}`
 
 Output: `{key1: key1, key2: key2}`
 
+If you prefer passing an Array to keyMirror, this: `keyMirror(['blue', 'red'])` is equivalent to `keyMirror({blue: null, red: null})`.
+
 I sometimes use this with lodash - use the following upon your first use of lodash to mix it in:
 
 ```javascript
