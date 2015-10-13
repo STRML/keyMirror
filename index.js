@@ -43,7 +43,7 @@ var keyMirror = function(obj) {
   }
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      ret[key] = key;
+      ret[key] = Symbol(key);
     }
   }
   return ret;
