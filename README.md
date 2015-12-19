@@ -46,6 +46,15 @@ Input:  `{key1: val1, key2: val2}`
 
 Output: `{key1: key1, key2: key2}`
 
+You can specify the prefix for all values:
+
+```javascript
+keyMirror({
+  OPEN: null,
+  CLOSE: null
+}, 'WINDOW_');
+```
+
 I sometimes use this with lodash - use the following upon your first use of lodash to mix it in:
 
 ```javascript
