@@ -33,9 +33,10 @@
  *   Output: {key1: key1, key2: key2}
  *
  * @param {object} obj
+ * @param {object} opts
  * @return {object}
  */
-var keyMirror = function(obj) {
+var keyMirror = function(obj, opts) {
   var ret = {};
   var key;
   if (!(obj instanceof Object && !Array.isArray(obj))) {
@@ -43,7 +44,13 @@ var keyMirror = function(obj) {
   }
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      ret[key] = key;
+      var objVal = obj[key];
+      if(opts && opts.useCustomValue === true && objVal) {
+        ret[key] = objVal;
+      }
+      else {
+        ret[key] = key;
+      }
     }
   }
   return ret;
