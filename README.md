@@ -53,3 +53,42 @@ var _ = require('lodash');
 _.mixin({keyMirror: require('keymirror')});
 // Can now be used as _.keyMirror(object)
 ```
+
+
+
+Optional Parameter
+----
+
+```javascript
+{ useCustomValue: true }
+```
+
+Idea is to provide users to provide custom values for some of the keys
+(specifically when you want to have keys different than the values)
+and tell the keyMirror to mirror only keys with value as null.
+
+
+```javascript
+var keyMirror = require('keymirror');
+var AppConstants = keyMirror({
+    a: null,
+    b: null,
+    jsPath: '../js/',
+    colors: keyMirror({
+        blue: null,
+        red: 'darkred'
+    }, { useCustomValue: true })
+}, {
+    useCustomValue: true
+});
+
+console.log(AppConstants.a); // Output: a
+console.log(AppConstants.b); // Output: b
+console.log(AppConstants.jsPath); // Output: ../js/ -> custom value being used
+console.log(AppConstants.colors.blue); // Output: blue
+console.log(AppConstants.colors.red); // Output: darkred -> custom value being used
+
+// Even AppConstants.colors is defined with custom value,
+// and this allows us to build complex JSON objects with few mirrored values and few custom values
+
+```
