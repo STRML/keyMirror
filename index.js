@@ -43,7 +43,9 @@ var keyMirror = function(obj) {
   }
   for (key in obj) {
     if (obj.hasOwnProperty(key)) {
-      ret[key] = key;
+      if(ret[key]==null){
+        ret[key] = key;
+      }
     }
   }
   return ret;
