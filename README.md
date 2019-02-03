@@ -1,55 +1,57 @@
-KeyMirror
+KeyMirrorPrefix
 =========
 
-Create an object with values equal to its key names.
+Create an object with each value constructed by concatonating a prefix with its key name.
 
-I thought `react/lib/keyMirror` was useful and wanted to reuse it without any dependencies.
-
-This is not my code, this is property of Facebook.
+I thought `https://github.com/STRML/keyMirror` was useful (esspecially as it had no additional dependencies) and wanted to reuse it, but with a prefix.
 
 Why?
 ----
 
-From [this discussion](https://github.com/facebook/react/issues/1639#issuecomment-45188026):
+I work on a lot of projects that use React Redux, and KeyMirror is a useful tool when defining Action Types.
 
+However, the action names inevitably become quite similar and the console does not differentiate them well.
 
-> The main purpose of keyMirror is to deal with the fact that Closure Compiler advanced mode crushes keys, which allows you to write code like
+So I like to add a prefix to a group of action types like these for searching for cities or countries.
 
-> `keyMirror({monkey: null, gorilla: null})`
+```
+export const CITIES = keyMirrorPfx('CITIES', {
+  SEARCH_REQUEST: null,
+  SEARCH_SUCCESS: null,
+  SEARCH_FAILURE: null,
+})
 
-> and have it become something like
+export const COUNTRIES = keyMirrorPfx('COUNTRIES', {
+  SEARCH_REQUEST: null,
+  SEARCH_SUCCESS: null,
+  SEARCH_FAILURE: null,
+})
+```
 
-> `k({m:null,g:null})`
+This would log something like:
 
-> which evaluates to
+```
+| prev state  { ... }
+| action      {type: "CITIES_SEARCH_SUCCESS"}
+| next state  { ... }
 
-> `{m:"m",g:"g"}`
+| prev state  { ... }
+| action      {type: "COUNTRIES_SEARCH_SUCCESS"}
+| next state  { ... }
+```
 
-> at runtime. If it was specified as a list of strings, they wouldn't get crushed matching the property names.
-
-Usage
+Usage - Soon
 -----
 
-`npm install keymirror`
+~~`npm install keymirrorprefix`~~
+
 
 ```javascript
-var keyMirror = require('keymirror');
-var COLORS = keyMirror({blue: null, red: null});
-var myColor = COLORS.blue;
-var isColorValid = !!COLORS[myColor];
+var keyMirrorPfx = require('keymirrorprefix');
+var COLOURS = keyMirror('COLOURS', { blue: null, red: null });
+var myColour = COLOURS.blue;
 ```
 
-The last line could not be performed if the values of the generated enum were
-not equal to their keys.
+Input:  `prefix, {key1: val1, key2: val2}`
 
-Input:  `{key1: val1, key2: val2}`
-
-Output: `{key1: key1, key2: key2}`
-
-I sometimes use this with lodash - use the following upon your first use of lodash to mix it in:
-
-```javascript
-var _ = require('lodash');
-_.mixin({keyMirror: require('keymirror')});
-// Can now be used as _.keyMirror(object)
-```
+Output: `{key1: prefix_key1, key2: prefix_key2}`
