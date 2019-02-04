@@ -1,4 +1,4 @@
-export const keyMirrorPfx = (prefix, obj) => {
+export default function(prefix, obj) {
   const ret = {}
   let key
   if (!(obj instanceof Object && !Array.isArray(obj))) {

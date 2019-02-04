@@ -1,6 +1,6 @@
 {
   "name": "keymirrorprefix",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple utility for creating an object with values equal to its keys, with a prefix",
   "main": "index.js",
   "author": "Patrick Taylor <patchfalcon@gmail.com>",

@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import { keyMirrorPfx } from './'
+import keyMirrorPfx from './'
 
 describe('KeyMirrorPrefix', () => {
 
