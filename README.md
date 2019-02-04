@@ -40,16 +40,18 @@ This would log something like:
 | next state  { ... }
 ```
 
-Usage - Soon
+Usage
 -----
 
-~~`npm install keymirrorprefix`~~
+`yarn add -D keymirrorprefix` (or `npm install -D keymirrorprefix`)
 
 
 ```javascript
-var keyMirrorPfx = require('keymirrorprefix');
-var COLOURS = keyMirror('COLOURS', { blue: null, red: null });
-var myColour = COLOURS.blue;
+import keyMirrorPfx from 'keymirrorprefix'
+
+const COLOURS = keyMirrorPfx('COLOURS', { blue: null, red: null })
+
+console.log(COLOURS.blue) // COLOURS_blue
 ```
 
 Input:  `prefix, {key1: val1, key2: val2}`
