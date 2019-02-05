@@ -1,4 +1,5 @@
 .DS_Store
+.idea
 .npmrc
 
 node_modules
